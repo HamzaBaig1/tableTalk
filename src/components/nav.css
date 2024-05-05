@@ -1,0 +1,40 @@
+.top-nav {
+  font-size: 12px;
+  display: flex;
+}
+.side-nav {
+  z-index: 100;
+  padding: 2rem 1rem;
+  height: 100vh;
+  width: 80%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  bottom: 0;
+  right: -1000px;
+}
+.display {
+  display: flex;
+}
+.menu {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .side-nav {
+    right: 0;
+  }
+
+  .display {
+    display: none;
+  }
+  .menu {
+    display: flex;
+    cursor: pointer;
+  }
+  .top-nav {
+    justify-content: center;
+    font-size: 10px;
+  }
+}
