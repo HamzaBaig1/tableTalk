@@ -1,0 +1,15 @@
+.contact-us {
+  border-radius: 20px;
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
+  font-size: 12px;
+  padding: 3px 10px;
+  transition: all 0.2s linear;
+  margin-top: 10px;
+}
+.contact-us:hover {
+  transform: scale(1.1);
+}

@@ -1,0 +1,17 @@
+.quick-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quick-view-btn {
+  border-radius: 20px;
+  border: 1px solid black;
+  color: black;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 3px 10px;
+  transition: all 0.2s linear;
+}
+.quick-view-btn:hover {
+  transform: scale(1.1);
+}

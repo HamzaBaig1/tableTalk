@@ -1,0 +1,40 @@
+.category {
+  padding: 3rem 0rem;
+}
+.category-img {
+  width: 60%;
+}
+
+.right {
+  padding: 4rem 2rem;
+}
+.hover {
+  transition: all 0.8s ease;
+}
+.hover:hover {
+  transform: scale(0.95);
+}
+.pointer {
+  cursor: pointer;
+}
+.sm-display {
+  display: block;
+}
+
+@media only screen and (max-width: 768px) {
+  .right {
+    padding: 0;
+  }
+  img {
+    width: 100%;
+  }
+  .sm-display {
+    display: block;
+  }
+  .lg-display {
+    display: block;
+  }
+  .category-img {
+    width: 35%;
+  }
+}

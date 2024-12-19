@@ -1,0 +1,15 @@
+.officeChairs {
+  padding: 3rem 0;
+}
+.chair-logo {
+  width: 30px;
+}
+.card img {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .font {
+    font-size: 10px;
+  }
+}

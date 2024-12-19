@@ -3,12 +3,50 @@ import EmailIcon from "@mui/icons-material/Email";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
+import logo from "../assets/logo.png";
 import "./nav.css";
 import { useState } from "react";
+import SideBar from "./SideBar";
+import { FocusOn } from "react-focus-on";
+import { Link } from "react-router-dom";
 
 function Nav() {
+  const navItem = [
+    {
+      title: "Office Chairs",
+      key: "/OfficeChairs/RevolvingChairs",
+    },
+    {
+      title: "Office Tables",
+      key: "/OfficeTables/ExecutiveTables",
+    },
+    {
+      title: "Dining Chairs",
+      key: "/DiningChairs",
+    },
+    {
+      title: "Dining Tables",
+      key: "/DiningTables",
+    },
+  ];
+  const socialLinks = [
+    {
+      key: "whatsapp",
+      icon: <WhatsAppIcon />,
+      link: "https://web.whatsapp.com/",
+    },
+    {
+      key: "instagram",
+      icon: <InstagramIcon />,
+      link: "https://www.instagram.com/",
+    },
+    {
+      key: "facebook",
+      icon: <FacebookIcon />,
+      link: "https://www.facebook.com/",
+    },
+  ];
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleHandler() {
@@ -35,74 +73,51 @@ function Nav() {
 
       <div className="container-fluid d-flex justify-content-between p-3 bg-light">
         <div className="logo my-auto">
-          <h6>Table Talk</h6>
+          <h6>
+            {" "}
+            <Link style={{ color: "inherit", textDecoration: "none" }} to={"/"}>
+              <img src={logo} alt="" className="logo" />
+            </Link>
+          </h6>
         </div>
         <div onClick={toggleHandler} className="menu">
           <MenuIcon />
         </div>
         <div className="list  display">
           <ul className="d-flex my-auto  list-unstyled">
-            <li className=" px-4">Living</li>
-            <li className=" px-4">Bedroom</li>
-            <li className=" px-4">Dining</li>
-            <li className=" px-4">Outdoor</li>
-            <li className=" px-4">Storage</li>
-            <li className=" px-4">Study</li>
-            <li className=" px-4">Office</li>
-            <li className=" px-4">Cafe</li>
+            {navItem.map((item) => (
+              <li className=" px-4 ">
+                <Link
+                  className="nav-link nav-link-ltr"
+                  key={item.key}
+                  style={{ color: "inherit", textDecoration: "none" }}
+                  to={item.key}
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="social  display ">
           <ul className="list-unstyled d-flex my-auto ">
-            <li className="px-2">
-              <InstagramIcon />
-            </li>
-            <li className="px-2">
-              <WhatsAppIcon />
-            </li>
-            <li className="px-2">
-              <FacebookIcon />
-            </li>
+            {socialLinks.map((link) => (
+              <li className="px-2" key={link.key}>
+                <Link
+                  style={{ color: "inherit", textDecoration: "none" }}
+                  to={link.link}
+                  target="#blank"
+                >
+                  {link.icon}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
-
-      {isOpen && (
-        <div className="container side-nav d-flex bg-light">
-          <div
-            className="ms-auto"
-            style={{ cursor: "pointer" }}
-            onClick={toggleHandler}
-          >
-            <CloseIcon />
-          </div>
-          <div className="list ">
-            <ul className="list-unstyled">
-              <li className=" px-2 py-3 border-bottom">Living</li>
-              <li className=" px-2 py-3 border-bottom">Bedroom</li>
-              <li className=" px-2 py-3 border-bottom">Dining</li>
-              <li className=" px-2 py-3 border-bottom">Outdoor</li>
-              <li className=" px-2 py-3 border-bottom">Storage</li>
-              <li className=" px-2 py-3 border-bottom">Study</li>
-              <li className=" px-2 py-3 border-bottom">Office</li>
-              <li className=" px-2 py-3 border-bottom">Cafe</li>
-            </ul>
-          </div>
-          <div className="social">
-            <ul className="list-unstyled d-flex mt-1 justify-content-center">
-              <li className="px-4">
-                <InstagramIcon />
-              </li>
-              <li className="px-4">
-                <WhatsAppIcon />
-              </li>
-              <li className="px-4">
-                <FacebookIcon />
-              </li>
-            </ul>
-          </div>
-        </div>
-      )}
+      <FocusOn enabled={isOpen} onClickOutside={toggleHandler}>
+        {isOpen && <SideBar toggleHandler={toggleHandler} />}
+      </FocusOn>
     </>
   );
 }
